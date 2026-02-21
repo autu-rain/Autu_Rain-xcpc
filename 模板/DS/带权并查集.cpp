@@ -47,40 +47,40 @@ struct DSU {
     }
 };
 
-// struct DSU {
-//     std::vector<int> f, d;
+struct DSU {
+    std::vector<int> f, d;
 
-//     DSU() {}
-//     DSU(int n) {
-//         init(n);
-//     }
+    DSU() {}
+    DSU(int n) {
+        init(n);
+    }
 
-//     void init(int n) {
-//         f.resize(n);
-//         std::iota(f.begin(), f.end(), 0);
-//         d.assign(n, 0);
-//     }
+    void init(int n) {
+        f.resize(n);
+        std::iota(f.begin(), f.end(), 0);
+        d.assign(n, 0);
+    }
 
-//     int find(int x) {
-//         if (f[x] != x) {
-//             int t = find(f[x]);
-//             d[x] += d[f[x]];
-//             f[x] = t;
-//         }
-//         return f[x];
-//     }
+    int find(int x) {
+        if (f[x] != x) {
+            int t = find(f[x]);
+            d[x] += d[f[x]];
+            f[x] = t;
+        }
+        return f[x];
+    }
 
-//     void merge(int x, int y, int t) {
-//         int px = find(x);
-//         int py = find(y);
-//         if (px == py) {
-//             return;
-//         }
-//         f[py] = px;
-//         d[py] = d[x] - d[y] - t;
-//     }
+    void merge(int x, int y, int t) {
+        int px = find(x);
+        int py = find(y);
+        if (px == py) {
+            return;
+        }
+        f[py] = px;
+        d[py] = d[x] - d[y] - t;
+    }
 
-//     int dist(int u, int v) {
-//         return d[u] - d[v];
-//     }
-// };
+    int dist(int u, int v) {
+        return d[u] - d[v];
+    }
+};

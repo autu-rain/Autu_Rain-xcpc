@@ -1,6 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+__gnu_pbds::tree<pair<int, int>, __gnu_pbds::null_type, less<pair<int, int>>,
+           __gnu_pbds::rb_tree_tag,
+           __gnu_pbds::tree_order_statistics_node_update>
+           rbt;
+// order_of_key(x) 返回严格小于x的元素的个数
+// find_by_order(x) 返回排名为x的元素的迭代器
+
+// c++位操作内置函数
+// __builtin_ffs(x), 与__lg(lowbit(x)) + 1的值相等
+// __builtin_clz(x), 返回前缀0的个数
+// __builtin_ctz(x), 返回后缀0的个数
+// __builtin_popcount(x), x的二进制表示中1的个数
+// __builtin_parity(x), x的二进制表示中1的个数的奇偶
+
 #define int long long
 #define pb push_back
 #define eb emplace_back
@@ -16,43 +32,12 @@ using namespace std;
 #define printd(x, d) cout << fixed << setprecision(d) << (x) << '\n'
 #define ne_per(a) next_permutation((a).begin(), (a).end())
 
-template <typename T>
-void base_dbg (const std::string& key, const T& value) {
-    std::cerr << key << " = " << value;
-}
-template <typename... Args>
-void dbg_args (const std::string& keys, Args... args) {
-    size_t pos{ 0 }; ( (base_dbg (keys.substr (pos, keys.find (',', pos) - pos), args),
-                        pos = keys.find (',', pos) + 1), ...);
-}
-#define dbg(...) { \
-    std::cerr << ""; \
-    dbg_args(#__VA_ARGS__, __VA_ARGS__); \
-    std::cerr << '\n'; \
-}
-template <typename T>
-void base_print (const T& value) {
-    std::cout << value << ' ';
-}
-template <typename... Args>
-void print_args (Args... args) {
-    size_t pos{ 0 }; ( (base_print (args) ), ...);
-}
-#define print(...) { \
-    std::cout << ""; \
-    print_args(__VA_ARGS__); \
-    std::cout << '\n'; \
-}
-
 using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned int;
 using i128 = __int128;
 
-std::mt19937 rnd (std::chrono::steady_clock().now().time_since_epoch().count() );
-
-constexpr int dx[] = {0, 0, 1, -1};
-constexpr int dy[] = {1, -1, 0, 0};
+std::mt19937 rnd (std::chrono::steady_clock().now().time_since_epoch().count());
 
 void solve() {
 }
@@ -60,9 +45,10 @@ void solve() {
 signed main() {
     ios_base::sync_with_stdio (false);
     cin.tie (nullptr); cout.tie (nullptr);
-    int t;
-    cin >> t;
-    // t = 1;
-    while (t -- ) solve();
+    int t = 1;
+    // cin >> t;
+    while (t -- ) {
+        solve();
+    }
     return 0;
 }

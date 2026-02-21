@@ -18,10 +18,7 @@ struct MTT {
         g1.work();
         g2.work();
         g3.work();
-        a.resize(3);
-        a[0].resize(n);
-        a[1].resize(n);
-        a[2].resize(n);
+        a.assign(3, vector<i64>(n));
         for (int j = 0; j < n; j++) {
             a[0][j] = g1.a[j].val();
             a[1][j] = g2.a[j].val();

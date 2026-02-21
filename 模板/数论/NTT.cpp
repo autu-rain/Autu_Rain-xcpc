@@ -6,19 +6,18 @@ struct NTT {
     vector<int> rev;
     Z invg, invm;
 
-    void init(const vector<Z> &p, const vector<Z> &q) {
+    void init(const vector<int> &p, const vector<int> &q) {
         n = p.size() + q.size() - 1;
-        invg = Z(1) / g;
         k = 1;
         while ((1 << k) < n) {
             k++;
         }
         m = 1 << k;
+        invg = Z(1) / g;
         invm = Z(1) / m;
-        a.assign(m, Z(0));
-        b.assign(m, Z(0));
+        a.assign(m, 0);
+        b.assign(m, 0);
         rev.assign(m, 0);
-        rev[0] = 0;
         for (int i = 0; i < m; i++) {
             rev[i] = (rev[i >> 1] >> 1) | ((i & 1) << k - 1);
         }
@@ -32,7 +31,7 @@ struct NTT {
 
     NTT() {}
 
-    NTT(const vector<Z> &p, const vector<Z> &q) {
+    NTT(const vector<int> &p, const vector<int> &q) {
         init(p, q);
     }
 

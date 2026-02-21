@@ -9,7 +9,7 @@ struct SegmentTree {
 };
 
 struct SegmentTreeGraph {
-    int n, idx;
+    int n, m, idx;
     std::vector<std::vector<std::pair<int, int>>> adj;
     struct SegmentTreeIn : public SegmentTree {
         std::vector<int> num, pos;
@@ -17,8 +17,8 @@ struct SegmentTreeGraph {
             num.assign(n_, 0);
             pos.assign(n_ << 2, 0);
         }
-        void build(int p, int l, int r) override {
-            pos[p] = stg.idx ++;
+        void build(int p, int l, int r) {
+            pos[p] = stg.idx++;
             if (r - l == 1) {
                 num[l] = pos[p];
                 return;
@@ -58,8 +58,8 @@ struct SegmentTreeGraph {
             num.assign(n_, 0);
             pos.assign(n_ << 2, 0);
         }
-        void build(int p, int l, int r) override {
-            pos[p] = stg.idx ++;
+        void build(int p, int l, int r) {
+            pos[p] = stg.idx++;
             if (r - l == 1) {
                 num[l] = pos[p];
                 return;
@@ -93,8 +93,8 @@ struct SegmentTreeGraph {
             modify(1, 0, n, x, y, k, w);
         }
     } out_sg;
-    SegmentTreeGraph(int n_) : n(n_), idx(0), in_sg(n_, *this), out_sg(n_, *this) {
-        adj.assign((1 << std::__lg(n)) * 2, {});
+    SegmentTreeGraph(int n_, int m_) : n(n_), m(m_), idx(0), in_sg(n_, *this), out_sg(n_, *this) {
+        adj.assign((8 << std::__lg(n)) + m, {});
         in_sg.build();
         out_sg.build();
         for (int i = 0; i < n; i ++ ) {
@@ -103,9 +103,6 @@ struct SegmentTreeGraph {
         }
     }
     void add(int u, int v, int w) {
-        if (u >= adj.size()) {
-            adj.resize(2 * u + 1);
-        }
         adj[u].emplace_back(v, w);
     }
     void insert(int l1, int r1, int l2, int r2, int w = 1) {

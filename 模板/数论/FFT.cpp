@@ -12,10 +12,9 @@ struct FFT {
             k++;
         }
         m = 1 << k;
-        a.resize(m);
-        b.resize(m);
-        rev.resize(m);
-        rev[0] = 0;
+        a.assign(m, 0);
+        b.assign(m, 0);
+        rev.assign(m, 0);
         for (int i = 0; i < m; i++) {
             rev[i] = (rev[i >> 1] >> 1) | ((i & 1) << k - 1);
         }

@@ -1,4 +1,4 @@
-auto Lagrange = [&]() {
+auto Lagrange = [&](int k) {
     Z ans = 0;
     for (int i = 0; i < n; i++) {
         Z res = y[i];

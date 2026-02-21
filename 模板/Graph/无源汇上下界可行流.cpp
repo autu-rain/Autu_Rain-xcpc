@@ -140,7 +140,7 @@ void solve() {
         return cout << "NO\n", void();
     }
     cout << "YES\n";
-    auto v  = g.edges();
+    auto v = g.edges();
     for (auto x : v) {
         if (x.from != 0 && x.to != n + 1) {
             cout << x.flow + x.down << '\n';

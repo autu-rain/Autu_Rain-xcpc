@@ -1,11 +1,3 @@
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <vector>
-#include <functional>
-
-using namespace std;
-
 vector<double> ys;
 int find(double y) {
     return lower_bound(ys.begin(), ys.end(), y) - ys.begin();

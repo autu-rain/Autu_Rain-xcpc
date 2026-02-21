@@ -10,7 +10,7 @@ int digit_dp(int l, int r) {
         if (i == n) {
             return is_ok(m, s);
         }
-        i64 msk = (i64)m << 32ll | i << 16ll | s; // 位运算, 字符串叠加(用空格分隔)(会很慢, 尽量用位运算), 离散化
+        i64 msk = (i64)m << 32ll | i << 16ll | s; // dp数组, 位运算, 字符串叠加(用空格分隔)(会很慢), 离散化
         if (!lim_l && !lim_h && st.count(msk)) {
             return st[msk];
         }

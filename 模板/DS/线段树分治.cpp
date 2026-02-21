@@ -38,12 +38,13 @@ struct SegmentTree {
     template<class T>
     void rangeQuery(int p, int l, int r, int x, int y, T &d, int ans) {
         if (r - l == 1) {
-
+            // 记得回溯
             return;
         }
         int m = (l + r) / 2;
         rangeQuery(2 * p, l, m, x, y, d, ans);
         rangeQuery(2 * p + 1, m, r, x, y, d, ans);
+        // 记得回溯
     }
     template<class T>
     void rangeQuery(int l, int r, T &d, int ans) {

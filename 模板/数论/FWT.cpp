@@ -58,8 +58,8 @@ struct FWT {
             k++;
         }
         m = 1 << k;
-        a.resize(m);
-        b.resize(m);
+        a.assign(m, 0);
+        b.assign(m, 0);
         for (int i = 0; i < p.size(); i++) {
             a[i] = Z(p[i]);
         }

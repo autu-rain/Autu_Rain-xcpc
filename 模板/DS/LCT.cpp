@@ -93,7 +93,9 @@ struct LCT {
         access(x);
         while (true) {
             push(x);
-            if (!t[x].ch[0]) break;
+            if (!t[x].ch[0]) {
+                break;
+            }
             x = t[x].ch[0];
         }
         splay(x);
@@ -101,7 +103,9 @@ struct LCT {
     }
 
     bool connected(int u, int v) {
-        if (u == v) return true;
+        if (u == v) {
+            return true;
+        }
         return find(u) == find(v);
     }
 
